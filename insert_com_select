@@ -1,0 +1,9 @@
+--insert com select
+insert into FIS_CLASSIF_MERC_INVENTARIO (MERC_CODIGO,EST_CODIGO,DT_INICIO,DT_FIM,CINV_CODIGO)
+select * FROM BKP_201903_FIS_CLASSIF 
+WHERE DT_INICIO = TO_DATE('01/01/2014','DD/MM/YYYY')
+and est_codigo = '10000007E'
+and merc_codigo not in(
+select merc_codigo FROM FIS_CLASSIF_MERC_INVENTARIO 
+WHERE DT_INICIO = TO_DATE('01/01/2014','DD/MM/YYYY')
+and est_codigo = '10000007E')
